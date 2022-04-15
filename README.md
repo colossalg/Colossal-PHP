@@ -18,26 +18,26 @@ implemented in other routers.
 
 #### Examples
 
-- /home or /home/                => `'/^\/home\/?$/'`
-- /pages/about or /pages/about/  => `'/^\/pages\/about\/?$/'`
+- `/home or /home/                => '/^\/home\/?$/'`
+- `/pages/about or /pages/about/  => '/^\/pages\/about\/?$/'`
 
 ### Route Parameters
 
-Often you will want to extract data from the URL to pass as a parameter to the
-handler of the route. As the route patterns are based upon PCRE regular
-expressions this can be done using capture groups.
+Often you will want to extract data from the URL to pass to the route handler.
+As the route patterns are based upon PCRE regular expressions this can be done
+using capture groups.
 
 Route parameters are captured as an associative array that is then passed to the
 route handlers.
 
 #### Examples
 
-- /users/<user-id> or /users/<user-id>/   => `'/^\/users\/(?<id>[0-9]+)\/?$/'`
+- `/users/<user-id> or /users/<user-id>/ => '/^\/users\/(?<id>[0-9]+)\/?$/'`
 
 ### Route Handlers
 
-Route handlers are called when the request method and URL match the method and
-pattern of the route. These should take either no parameters or a single
+Route handlers are called when the request method/URL match the route
+method/pattern. These should take either no parameters or a single
 parameter for the route parameters (an associative array).
 
 #### Examples
@@ -59,15 +59,15 @@ $router->run();
 ### Controllers
 
 Specifying routes is also possible via registering classes as controllers.
-Internally, the reflection API is used to find all methods marked with the
-attribute:
+Internally, the PHP reflection API is used to find all methods marked with
+the attribute:
 
-#[Route(method: '<http-method>', pattern: '<pcre-pattern>')]
+`#[Route(method: '<http-method>', pattern: '<pcre-pattern>')]`
 
-These methods are then registered as a route via the addRoute method where:
+These methods are then registered as routes via the addRoute method where:
 
-- <http-method>  (string) Is the HTTP method of the route.
-- <pcre-pattern> (string) Is the PCRE pattern of the route.
+- `<http-method>`  (string) Is the HTTP method of the route.
+- `<pcre-pattern>` (string) Is the PCRE pattern of the route.
 - The method itself is wrapped in a Closure and used as the handler of the route.
 
 #### Example
