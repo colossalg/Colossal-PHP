@@ -18,8 +18,8 @@ implemented in other routers.
 
 #### Examples
 
-- /home or /home/                => '/^\/home\/?$/'
-- /pages/about or /pages/about/  => '/^\/pages\/about\/?$/
+- /home or /home/                => `'/^\/home\/?$/'`
+- /pages/about or /pages/about/  => `'/^\/pages\/about\/?$/`
 
 ### Route Parameters
 
@@ -32,7 +32,7 @@ route handlers.
 
 #### Examples
 
-- /users/<user-id> or /users/<user-id>/   => '/^\/users\/(?<id>[0-9]+)\/?$/'
+- /users/<user-id> or /users/<user-id>/   => `'/^\/users\/(?<id>[0-9]+)\/?$/'`
 
 ### Route Handlers
 
