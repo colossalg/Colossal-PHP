@@ -19,7 +19,7 @@ implemented in other routers.
 #### Examples
 
 - /home or /home/                => `'/^\/home\/?$/'`
-- /pages/about or /pages/about/  => `'/^\/pages\/about\/?$/`
+- /pages/about or /pages/about/  => `'/^\/pages\/about\/?$/'`
 
 ### Route Parameters
 
