@@ -43,8 +43,8 @@ $router->addRoute('GET',  '/^\/users\/(?<id>[0-9]+)\/?$/', function(array $route
 
 // This route will match any POST requests to /users/<id> or /users/<id>/
 // <id> will be placed in an associative array and passed to the route handler.
-$router->addRoute('GET',  '/^\/users\/(?<id>[0-9]+)\/?$/', function(array $routeParameters) {
-    echo "GET User id = $routeParameters[id]";
+$router->addRoute('POST', '/^\/users\/(?<id>[0-9]+)\/?$/', function(array $routeParameters) {
+    echo "POST User id = $routeParameters[id]";
 });
 
 // -------------------------------------------------------------------------- //
@@ -95,7 +95,7 @@ final class UserController
         echo "GET User id = $routeParameters[id]";
     }
 
-    // This route will match any GET requests to /users/<id> or /users/<id>/
+    // This route will match any POST requests to /users/<id> or /users/<id>/
     // <id> will be placed in an associative array and passed to the method.
     #[Route(method: 'POST', pattern: '/^\/users\/(?<id>[0-9]+)\/?$/')]
     public function postUser(array $routeParameters)
