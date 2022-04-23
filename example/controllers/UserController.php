@@ -28,9 +28,9 @@ final class UserController
     #[Route(method: 'POST', pattern: '/^\/users\/?$/')]
     public function postUser(): void
     {
-        $json = json_decode(file_get_contents('php://input'));
-
         $this->userModel = new UserModel;
+
+        $json = json_decode(file_get_contents('php://input'));
 
         $this->userModel->firstName = $json->firstName;
         $this->userModel->lastName  = $json->lastName;
@@ -39,18 +39,24 @@ final class UserController
         $this->userModel->insert();
     }
 
-    #[Route(method: 'PUT',  pattern: '/^\/users\/?$/')]
-    public function putUser(): void
+    #[Route(method: 'PUT', pattern: '/^\/users\/(?<id>[0-9]+)\/?$/')]
+    public function putUser($routeParameters): void
     {
+        $this->userModel->load((int)$routeParameters['id']);
+
         $json = json_decode(file_get_contents('php://input'));
 
-        $this->userModel = new UserModel;
-
-        $this->userModel->id        = (int)($json->id);
         $this->userModel->firstName = $json->firstName;
         $this->userModel->lastName  = $json->lastName;
         $this->userModel->email     = $json->email;
 
         $this->userModel->update();
+    }
+
+    #[Route(method: 'DELETE', pattern: '/^\/users\/(?<id>[0-9]+)\/?$/')]
+    public function deleteUser($routeParameters): void
+    {
+        $this->userModel->load((int)$routeParameters['id']);
+        $this->userModel->delete();
     }
 }

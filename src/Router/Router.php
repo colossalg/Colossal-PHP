@@ -9,6 +9,9 @@ class Router
     private array       $routes;
     private \Closure    $handler404;    // This should take two parameters $method (string) and $url (string).
 
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this->routes       = [];

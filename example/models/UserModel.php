@@ -4,15 +4,15 @@ final class UserModel extends Colossal\ORM\Model
 {
     const TABLE = 'users';
 
-    #[Field(column: 'id', type: 'int', key: true)]
+    #[Field(column: 'id', key: true)]
     public int $id;
 
-    #[Field(column: 'first_name', type: 'string')]
+    #[Field(column: 'first_name')]
     public string $firstName;
 
-    #[Field(column: 'last_name',  type: 'string')]
+    #[Field(column: 'last_name')]
     public string $lastName;
 
-    #[Field(column: 'email', type: 'string')]
+    #[Field(column: 'email')]
     public string $email;
 }
