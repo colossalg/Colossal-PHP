@@ -1,4 +1,5 @@
 {
+    "name": "colossalg/colossal-php",
     "autoload": {
         "psr-4": {"Colossal\\": "src/"}
     },
